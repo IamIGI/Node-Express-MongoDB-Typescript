@@ -6,16 +6,16 @@ export const createUserSchema = object({
             required_error: 'Name is required',
         }),
         password: string({
-            required_error: 'Password is required',
+            required_error: 'Name is required',
         }).min(6, 'Password too short - should be 6 chars minimum'),
         passwordConfirmation: string({
-            required_error: 'Password confirm is required',
+            required_error: 'passwordConfirmation is required',
         }),
         email: string({
             required_error: 'Email is required',
-        }).email('Not a valid email '),
+        }).email('Not a valid email'),
     }).refine((data) => data.password === data.passwordConfirmation, {
-        message: 'Password do not match',
+        message: 'Passwords do not match',
         path: ['passwordConfirmation'],
     }),
 });
